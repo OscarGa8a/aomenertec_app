@@ -1,0 +1,4 @@
+<div class="form-group" [ngClass]="{'focus': isFocus}">
+    <label for="">{{item.titulo}}</label>
+    <input type="text" [formControl]="form" (mouseenter)="isFocus = true" (mouseout)="isFocus = false" class="form-control">
+</div>

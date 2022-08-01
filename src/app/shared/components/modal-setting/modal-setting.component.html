@@ -1,0 +1,12 @@
+<!-- contenedor de la modal de configuración -->
+<ng-template #modalSetting let-modal>
+    <!-- contenedor del cuerpo de la modal -->
+    <div class="modal-body">
+        <div class="content-img">
+            <img *ngIf="isSuccess" class="success" src="assets/images/modal_true.png" alt="">
+            <img *ngIf="!isSuccess" class="error" src="assets/images/modal_error.png" alt="">
+        </div>
+        <h1 class="title">{{title}}</h1>
+        <p class="description">{{description}}</p>
+    </div>
+</ng-template>

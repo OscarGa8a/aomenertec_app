@@ -1,0 +1,23 @@
+.img-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: url('/assets/images/img-top-dashboard.png');
+    background-repeat: round;
+    span {
+        width: 15%;
+        color: white;
+        text-align: center;
+        font-size: 35px;
+    }
+    img {
+        width: 40%;
+        margin: 15px 5px 15px 0;
+    }
+    &.hidden-info {
+        justify-content: flex-end;
+        span {
+            display: none;
+        }
+    }
+}

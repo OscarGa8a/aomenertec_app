@@ -1,0 +1,47 @@
+<!-- contenedor de la modal de guía de tallas -->
+<ng-template #modalRecharge let-modal>
+
+  <!-- contenedor del cuerpo de la modal -->
+  <div class="modal-body">
+    <!-- <h1>Hola mundo</h1> -->
+    <div class="content-img">
+      <img *ngIf="resp?.status === 'ok'" class="success" src="assets/images/modal_true.png" alt="">
+      <img *ngIf="resp?.status === 'error'" class="error" src="assets/images/modal_error.png" alt="">
+    </div>
+
+    <h1 class="title">{{resp?.status === 'ok' ? 'Recarga Exitosa' : 'Error de recarga'}}</h1>
+
+    <ng-container *ngIf="resp?.status === 'ok'">
+      <div class="description-sucess">
+        <div class="fila">
+          <p>Saldo recarga</p>
+          <span>{{resp?.saldo_recarga}} kWh</span>
+        </div>
+
+        <div class="fila">
+          <p>Saldo</p>
+          <span>{{resp?.saldo}} kWh</span>
+        </div>
+
+        <div class="fila">
+          <p>Descuento crédito</p>
+          <span>{{resp?.descuento_credito}} kWh</span>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="resp?.status === 'error'">
+      <div class="description-sucess">
+        <div class="fila">
+          <p>Status</p>
+          <span>{{resp?.status}}</span>
+        </div>
+
+        <div class="fila">
+          <p>Error</p>
+          <span>{{resp?.error}}</span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>

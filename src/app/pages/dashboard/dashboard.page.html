@@ -1,0 +1,141 @@
+<app-modal-recharge [resp]="respRecharge"></app-modal-recharge>
+<app-modal-info></app-modal-info>
+<app-modal-confirmation (sendConfirm)="goToJobList()"></app-modal-confirmation>
+<ion-content>
+  <div class="content">
+
+    <app-image-header [showInfo]="true"></app-image-header>
+
+    <div class="dashboard">
+
+      <div class="energy">
+        <div class="title">
+          <h5>Energía</h5>
+          <img src="assets/images/bombillo.png" alt="">
+        </div>
+
+        <div class="content-value">
+          <div class="unit">
+            <span>kWh</span>
+          </div>
+
+          <div class="value">
+            <h1>{{(infoDashboard?.consumo || 2.73) | rounded:2}}</h1>
+          </div>
+        </div>
+
+        <div class="date">
+          <small>{{infoDashboard?.fecha_corte || '28/11/21'}}</small>
+        </div>
+      </div>
+
+      <div #contentDashboard class="content-dashboard">
+        <div class="indicators">
+          <div class="fila-indicator volt-watt">
+            <div class="voltage">
+              <h3>{{(infoDashboard?.volt || 110) | rounded:2}}</h3>
+              <img src="assets/images/V.png" alt="">
+            </div>
+
+            <div class="watts">
+              <h3>{{(infoDashboard?.pot || 0) | rounded:2}}</h3>
+              <img src="assets/images/W.png" alt="">
+            </div>
+          </div>
+
+          <div class="fila-indicator balance">
+            <div class="balance" [ngClass]="{
+                'recharge': infoDashboard?.tipo_consumo === 2,
+                'subsidy': infoDashboard?.tipo_consumo === 1,
+                'credit': infoDashboard?.tipo_consumo === 3 || infoDashboard?.tipo_consumo === 0
+              }">
+              <span *ngIf="infoDashboard?.tipo_consumo !== 0" class="icon-arrow"></span>
+              <span *ngIf="infoDashboard?.tipo_consumo === 0" class="icon-x"></span>
+              <h3 *ngIf="infoDashboard?.tipo_consumo === 0">0 kWh</h3>
+
+              <h3 *ngIf="infoDashboard?.tipo_consumo === 1">
+                {{infoDashboard?.subsidio | rounded:2}} kWh
+              </h3>
+
+              <h3 *ngIf="infoDashboard?.tipo_consumo === 2">
+                {{infoDashboard?.saldo | rounded:2}} kWh
+              </h3>
+
+              <h3 *ngIf="infoDashboard?.tipo_consumo === 3">
+                {{infoDashboard?.credito | rounded:2}} kWh
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="factor">
+          <p>Factor horario:</p>
+          <h3>{{infoDashboard?.factP || 1}}</h3>
+        </div>
+
+        <div class="available">
+          <p>Disponibilidad:</p>
+          <h3>{{2}}</h3>
+        </div>
+
+        <div class="state" [ngClass]="{
+            'hability': infoDashboard?.estado === 'habilitado',
+            'inhability': infoDashboard?.estado === 'suspendido' || !infoDashboard?.estado
+          }">
+          <span>{{(infoDashboard?.estado | capitalize) || 'Suspendido'}}</span>
+        </div>
+
+        <div class="reload">
+          <div class="form-group">
+            <input [formControl]="toControl(dashboardForm.get('recharge'))" type="text" class="form-control" placeholder="Ingrese código recarga">
+            <ion-button (click)="recharge()">Recargar</ion-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer" [ngClass]="{'is-client': role === 0}" [ngStyle]="{
+          'background':
+            'url(' +
+              (role !== 0 ? 
+                '/assets/images/img-footer-dashboard.png'  :
+                '/assets/images/img-footer-dashboard_publicity.png') + 
+            ')'
+          }">
+        <ng-container *ngIf="role !== 0">
+          <div class="info">
+            <p>{{client?.id || 13}}.</p>
+            <p>{{client?.nombre || 'Adrian Ramos'}}</p>
+            <p>{{client?.barrio || 'N/A'}}</p>
+            <p>{{client?.direccion || 'Cra 12A # 87-22'}}</p>
+
+            <div *ngIf="role !== 0" class="state">
+              <span>Lectura</span>
+            </div>
+          </div>
+        </ng-container>
+        <div class="buttons">
+          <div *ngIf="role !== 0" class="setting">
+            <button *ngIf="!isOpenConfig" (click)="isOpenConfig = true" class="closed"></button>
+
+            <div class="content-opened">
+              <button *ngIf="isOpenConfig" (click)="isOpenConfig = false" class="opened"></button>
+
+              <div *ngIf="isOpenConfig" class="config" [ngClass]="{'technical': role === 10}">
+                <button *ngIf="false" (click)="isOpenConfig = false; setConfig()" class="load-config">
+                  CARGAR CONFIG
+                </button>
+                <button (click)="setStateDevice(); isOpenConfig = false" class="cut-connection">CORTE/CONEXIÓN</button>
+                <button (click)="getSettings()" class="parameters">CONFIGURACIÓN</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="close">
+            <button (click)="closeDashboard()"></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ion-content>

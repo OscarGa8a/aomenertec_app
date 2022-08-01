@@ -1,0 +1,46 @@
+::ng-deep .modal-recharge .modal-dialog {
+    max-width: 80% !important;
+    margin: 0 auto !important;
+}
+
+::ng-deep .modal-recharge .modal-dialog .modal-content {
+    max-height: 100%;
+    border: none;
+}
+
+.modal-body {
+    border-radius: 8px;
+    position: relative;
+    background-color: var(--background-enertec);
+    font-family: var(--font-open-sans);
+    .content-img {
+        display: flex;
+        justify-content: center;
+        img {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            top: -30px;
+        }
+    }
+    .title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 22px;
+    }
+    .description-sucess {
+        margin: 0;
+        padding: 10px 0;
+        text-align: center;
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            p {
+                margin-bottom: 5px;
+            }
+        }
+    }
+    .description-error {
+        margin-bottom: 5px;
+    }
+}

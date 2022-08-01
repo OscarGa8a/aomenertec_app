@@ -1,0 +1,20 @@
+[
+  {
+    "type": "technical",
+    "name": "Daniel Reina",
+    "email": "danielReina@gmail.com",
+    "password": "technical1"
+  },
+  {
+    "type": "technical",
+    "name": "Sneider Fuentes",
+    "email": "sneiderFuentes@gmail.com",
+    "password": "technical2"
+  },
+  {
+    "type": "admin",
+    "name": "Iván Reyes",
+    "email": "admin@gmail.com",
+    "password": "admin2021"
+  }
+]

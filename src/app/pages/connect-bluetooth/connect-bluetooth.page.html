@@ -1,0 +1,32 @@
+<app-modal-info></app-modal-info>
+<ion-content>
+  <div class="content">
+    <div class="content-header-main">
+      <app-main-header title="Conectar Bluetooth"></app-main-header>
+    </div>
+
+    <div class="form-connect" [formGroup]="formConnect">
+
+      <div class="form-group">
+        <label for="ssid">Dirección MAC Bluetooth</label>
+        <input type="text" id="mac" class="form-control" placeholder="Ingrese la dirección MAC" formControlName="macAddress">
+        <small *ngIf="macNotValid" class="error">Debe ingresar la dirección MAC del Bluetooth</small>
+      </div>
+
+      <div class="connect">
+        <ion-button (click)="onVerifyConnection()" class="button-connect">
+          Conectar
+        </ion-button>
+      </div>
+
+      <div class="content-back">
+        <ion-button class="back" [routerLink]="['/login']">
+          <ion-icon class="icon" slot="start" name="chevron-back-outline"></ion-icon>
+          Atrás
+        </ion-button>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

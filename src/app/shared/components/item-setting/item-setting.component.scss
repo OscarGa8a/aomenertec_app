@@ -1,0 +1,17 @@
+.form-group {
+    &.focus {
+        label {
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        .form-control {
+            background-color: #fff;
+        }
+    }
+    label {
+        margin-bottom: 4px;
+    }
+    .form-control {
+        background-color: #eeeeee;
+    }
+}

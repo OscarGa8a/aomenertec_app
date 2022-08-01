@@ -1,0 +1,75 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;800&family=Open+Sans&display=swap');
+// @import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+:root {
+    --orange-ligth: #f9b000;
+    --orange-dark: #eb5d0b;
+    --blue-ligth: #009599;
+    --blue-dark: #002430;
+    --background-enertec: #fff;
+    --color-error: #ff0000;
+    --color-form: #444444;
+    --font-jost: 'Jost', sans-serif;
+    --font-open-sans: 'Open Sans', sans-serif;
+    --color-shadow: #413f3f7A;
+    --gray: #7d7a7a;
+    --green: #10CD41;
+    --red: #ff0000;
+}
+
+body {
+    span {
+        &[class*="icon-"] {
+            mask-size: contain;
+            mask-position: 50% 50%;
+            mask-repeat: no-repeat;
+            background: currentColor;
+            width: 1em;
+            height: 1em;
+            // color: #ffffff;
+        }
+        &[class*="icon-arrow"] {
+            mask-image: url(../images/arrow.png);
+        }
+        &[class*="icon-x"] {
+            mask-image: url(../images/x.png);
+        }
+    }
+}
+
+.correct,
+.error {
+    .alert-title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        color: var(--color-form);
+        font-family: var(--font-open-sans);
+    }
+    .alert-message {
+        text-align: center;
+        font-family: var(--font-open-sans);
+        color: var(--color-form);
+    }
+}
+
+.correct {
+    // --background: url(../images/fondoAlert.png);
+    --background: #fff;
+    .continue {
+        background-color: var(--blue-ligth);
+        color: #fff;
+        font-family: var(--font-open-sans);
+    }
+}
+
+.error {
+    // --background: url(../images/fondoAlert2.png);
+    --background: #fff;
+    .accept {
+        background-color: var(--color-error);
+        color: #fff;
+        font-family: var(--font-open-sans);
+    }
+}

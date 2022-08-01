@@ -1,0 +1,27 @@
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    .items-pagination {
+        display: flex;
+        .back,
+        .forward {
+            &.disabled {
+                color: gray;
+                pointer-events: none;
+                opacity: 0;
+            }
+        }
+        .back,
+        .forward,
+        .item {
+            background-color: #fff;
+            font-size: 14px;
+            margin: 0 4px;
+            &.active {
+                background-color: var(--blue-ligth);
+                padding: 0 5px;
+                border-radius: 5px;
+            }
+        }
+    }
+}

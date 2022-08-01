@@ -1,0 +1,12 @@
+<!-- contenedor de la modal de guía de tallas -->
+<ng-template #modalInfo let-modal>
+  <!-- contenedor del cuerpo de la modal -->
+  <div class="modal-body">
+    <div class="content-img">
+      <img *ngIf="!infoModal.isError" class="success" src="assets/images/modal_true.png" alt="">
+      <img *ngIf="infoModal.isError" class="error" src="assets/images/modal_error.png" alt="">
+    </div>
+    <h1 class="title">{{infoModal.title}}</h1>
+    <p class="description">{{infoModal.description}}</p>
+  </div>
+</ng-template>

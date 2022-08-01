@@ -1,0 +1,30 @@
+::ng-deep .modal-help .modal-dialog {
+  max-width: 80% !important;
+  margin: 0 auto !important;
+}
+
+::ng-deep .modal-help .modal-dialog .modal-content {
+  max-height: 80%;
+  border-radius: 20px;
+}
+
+.modal-body {
+  position: relative;
+  padding: 0;
+  span {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 30px;
+    color: #ff0000;
+  }
+  .content-img {
+    height: 80vh;
+    overflow: auto;
+    border-radius: 20px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

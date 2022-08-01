@@ -1,0 +1,91 @@
+<app-modal-info></app-modal-info>
+<app-modal-confirmation (sendConfirm)="isLogout ? onConfirmLogout() : onConfirmReload()">
+</app-modal-confirmation>
+
+<ion-content>
+
+  <div class="content">
+    <div class="content-image">
+      <ion-img class="image" slot="end" src="assets/images/logo-horizontal.png"></ion-img>
+    </div>
+    <div class="title">
+      <ng-container *ngFor="let word of words; let i = index">
+        <h1 [ngStyle]="{'color': i === 0 ? '#f9b000' : '#009599'}">{{word}}</h1>
+      </ng-container>
+    </div>
+
+    <div class="content-table">
+      <div #table class="table2">
+        <div class="data-table">
+          <div class="top-table">
+            <div class="content-buttons">
+              <div class="reload" [ngClass]="{'disabled': disabledButtonReload }" (click)="reload()">
+                <span class="icon material-icons">cached</span>
+              </div>
+
+              <div class="logout" (click)="logout()">
+                <span class="icon material-icons">home</span>
+              </div>
+            </div>
+
+            <div class="search form-group">
+              <label for="">Buscar:</label>
+              <input [formControl]="searchControl" class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="head-table">
+            <div class="id">#</div>
+            <div class="order">Orden</div>
+            <div class="client">Cliente</div>
+            <div class="address">Dirección</div>
+          </div>
+
+          <div class="body-table">
+            <ng-container *ngFor="let item of jobListFiltered | slice:((page - 1) * cantItemsShow) : (page * cantItemsShow); let i = index">
+              <div (click)="getConnectedBluetooth(item)" class="body-item" [ngClass]="{'animation': item.nearbyNetworks}">
+                <div class="id">
+                  <p *ngIf="!item.reviewed">{{ i + 1}}</p>
+                  <span *ngIf="item.reviewed" class="id icon material-icons">done_all</span>
+                </div>
+
+                <div class="order" [ngClass]="{
+                    'red': item.orden.toLowerCase() === 'corte',
+                    'white': item.orden.toLowerCase() === 'lectura',
+                    'green': item.orden.toLowerCase() === 'conexion'
+                  }">
+                  <span class="badge">{{item.orden}}</span>
+                </div>
+
+                <div class="client">{{item.nombre}}</div>
+                <div class="address">{{item.direccion || 'Falta dirección'}}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <ng-container *ngIf="jobList.length > 0 && cantItemsShow">
+          <div class="footer-table">
+            <div class="content-lines">
+              <div class="line-enertec blue"></div>
+              <div class="line-enertec orange"></div>
+            </div>
+
+            <div class="pagination">
+              <div class="info-pagination">
+                <small>
+                  {{ jobListFiltered.length | rangePagination:page:cantItemsShow}}
+                </small>
+              </div>
+
+              <div class="content-pagination">
+                <app-pagination [page]="page" [lengthList]="jobListFiltered.length" [cantItemsShow]="cantItemsShow" [cantPagination]="3" (changePage)="page = $event">
+                </app-pagination>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ion-content>

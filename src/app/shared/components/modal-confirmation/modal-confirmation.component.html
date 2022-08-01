@@ -1,0 +1,15 @@
+<!-- contenedor de la modal de configuración -->
+<ng-template #modalConfirmation let-modal>
+    <!-- contenedor del cuerpo de la modal -->
+    <div class="modal-body">
+        <div class="content-img">
+            <img src="assets/images/modal_logout.png" alt="">
+        </div>
+        <h1 class="title">{{infoModal.title}}</h1>
+        <p class="description">{{infoModal.description}}</p>
+        <div class="content-buttons">
+            <button class="button confirm" (click)="confirm()">Confirmar</button>
+            <button class="button cancel" (click)="closeModal()">Cancelar</button>
+        </div>
+    </div>
+</ng-template>

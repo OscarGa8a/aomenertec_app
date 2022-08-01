@@ -1,0 +1,10 @@
+<div class="pagination">
+    <div class="items-pagination">
+        <div class="back item" (click)="changePortionPagination(false)" [ngClass]="{'disabled': portion === 1}">
+            <<</div>
+                <div class="item" *ngFor="let item of listItems | slice:((portion - 1) * cantPagination) : (portion * cantPagination); let i = index" [ngClass]="{'active': (i + ((portion - 1) * cantPagination)) === (page - 1)}" (click)="onChangePage(i)">
+                    {{item}}
+                </div>
+                <div class="forward item" (click)="changePortionPagination(true)" [ngClass]="{'disabled': portion === maxPortion || lengthList === 0}">>></div>
+        </div>
+    </div>

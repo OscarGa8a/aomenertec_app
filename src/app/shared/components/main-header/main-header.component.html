@@ -1,0 +1,12 @@
+<div class="content-img">
+  <ion-img class="image" src="assets/images/logo-horizontal.png"></ion-img>
+</div>
+<div class="title-login">
+  <ng-container *ngFor="let word of words; let i = index">
+    <h1 [ngStyle]="{'color' : i === 0 ? '#f9b000': '#009599'}">{{word}}</h1>
+  </ng-container>
+</div>
+<div class="content-lines">
+  <div class="line-enertec blue"></div>
+  <div class="line-enertec orange"></div>
+</div>

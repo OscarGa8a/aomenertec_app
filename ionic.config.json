@@ -1,0 +1,7 @@
+{
+  "name": "aoym-enertec",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
