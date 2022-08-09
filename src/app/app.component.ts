@@ -32,9 +32,9 @@ export class AppComponent implements OnInit {
     // set to landscape
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
-    this.networkService.getNetworkStatus().subscribe(isOnline => {
-      this.pagesService.handleConnectionInternet(isOnline);
-    });
+    // this.networkService.getNetworkStatus().subscribe(isOnline => {
+    //   this.pagesService.handleConnectionInternet(isOnline);
+    // });
   }
 
   async isFirst(): Promise<void> {
